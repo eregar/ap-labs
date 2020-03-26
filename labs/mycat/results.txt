@@ -1,0 +1,11 @@
+speed with hola.txt:
+cat2	:  real    0m0.007s
+cat	:  real    0m0.004s
+
+speed with adios.txt:
+cat2	:  real    0m0.009s
+cat	:  real    0m0.004s
+
+speed with output.txt:
+cat2	:  real    0m0.172s
+cat	:  real    0m0.007s
