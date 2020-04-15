@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <signal.h>
 
 #define RED 1
 #define GREEN 2
@@ -48,6 +49,8 @@ int panicf(const char *format, ...){
     vprintf(format,ap);
     va_end(ap);
     textcolor(WHITE);
+    printf("\n");
+    raise(SIGABRT);
     return 0;
 }
 
