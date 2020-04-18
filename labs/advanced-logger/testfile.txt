@@ -1,0 +1,3 @@
+[INFO] hola
+[INFO] hola
+[INFO] INFO Message 1[WARNING] WARN Message 2[ERROR] ERROR Message 2
