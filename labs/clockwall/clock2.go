@@ -6,12 +6,20 @@ import (
 	"log"
 	"net"
 	"time"
+	"os"
+	"fmt"
 )
 
 func handleConn(c net.Conn) {
 	defer c.Close()
+	loc , err1 :=time.LoadLocation(os.Getenv("TZ"))
+	fmt.Println("user connected to: "+os.Getenv("TZ"))
+	if err1!=nil {
+		fmt.Println("usando local")
+		loc , err1 =time.LoadLocation("Local")
+	}
 	for {
-		_, err := io.WriteString(c, time.Now().Format("15:04:05\n"))
+		_, err := io.WriteString(c, time.Now().In(loc).Format("15:04:05\n"))
 		if err != nil {
 			return // e.g., client disconnected
 		}
@@ -20,7 +28,10 @@ func handleConn(c net.Conn) {
 }
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:9090")
+	if len(os.Args)<3 || os.Args[1]!="-port" {
+		return
+	}
+	listener, err := net.Listen("tcp", "localhost:"+os.Args[2])
 	if err != nil {
 		log.Fatal(err)
 	}
