@@ -11,11 +11,19 @@ import (
 	"log"
 	"net"
 	"os"
+	"flag"
 )
 
 //!+
 func main() {
-	conn, err := net.Dial("tcp", "localhost:8000")
+	username := flag.String("user", "", "your username")
+	server := flag.String("server", "localhost:8000","the server address to connect to 'ipaddress:port'")
+	flag.Parse()
+	if *username=="" {
+		log.Println("a username is required to connect")
+		return
+	}
+	conn, err := net.Dial("tcp", *server)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,6 +33,7 @@ func main() {
 		log.Println("done")
 		done <- struct{}{} // signal the main goroutine
 	}()
+	io.WriteString(conn, *username+"\n")
 	mustCopy(conn, os.Stdin)
 	conn.Close()
 	<-done // wait for background goroutine to finish
