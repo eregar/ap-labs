@@ -165,7 +165,7 @@ int base64decode (char *in, size_t inLen, unsigned char *out, size_t *outLen) {
 
 void handler(int signal){
     if(signal==SIGINT || signal==SIGUSR1){
-	infof("%d\n",(progress*100)/total);
+	infof("%d%%\n",(progress*100)/total);
     }
     else{
 	infof("unexpected signal!\n");
