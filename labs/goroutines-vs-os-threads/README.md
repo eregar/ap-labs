@@ -20,3 +20,16 @@ How to submit your work
 GITHUB_USER=<your_github_user>  make submit
 ```
 More details at: [Classify API](../../classify.md)
+
+How to run the programs
+=======================
+for excercise 9.4 
+go run pipelines.go
+-- optional flags --
+-file <string> to set the destination file for the report (default out.txt)
+-max <int> to set max number of goroutines created for the pipeline (default none,infinite)
+--------------------
+for excercise 9.5
+go run messages.go
+-- optional flags -- 
+-file <string> to set the destination file for the report (default out.txt)
