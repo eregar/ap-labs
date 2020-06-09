@@ -15,7 +15,7 @@ In order to build the program you can either
 
 * use "go build grand-prix.go" directly
 or
-* use make
+* use make action
 
 ### Run grand-prix.go
 In order to run the program you can either

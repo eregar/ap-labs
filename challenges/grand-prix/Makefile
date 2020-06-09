@@ -1,3 +1,5 @@
+include ../../common.mk
+
 racers?=8
 laps?=3
 action:
